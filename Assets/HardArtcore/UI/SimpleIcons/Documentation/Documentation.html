@@ -1,0 +1,1350 @@
+<!doctype html>
+<!-- Generated from StoreMedia/Source/documentation.html by build.js. Online: https://hardartcore.com/unity_assets/simple-ui-icons/documentation/ -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simple UI Icons Documentation</title>
+<style>/*
+ * Asset documentation template (layout: asset_documentation).
+ * Also the look of every other page on the site (head.html loads it everywhere).
+ * Everything is scoped under .adoc so it cannot leak into the rest of the site.
+ * Components: see _templates/asset-documentation.html for copy-paste examples.
+ * The hub pages (.hs, assets/css/hub.css) share these tokens: warm canvas, Nunito, yellow highlight.
+ */
+
+@font-face { font-family: Nunito; font-weight: 400; font-display: swap; src: url(https://hardartcore.com/assets/fonts/Nunito-Regular.ttf) format("truetype"); }
+@font-face { font-family: Nunito; font-weight: 700; font-display: swap; src: url(https://hardartcore.com/assets/fonts/Nunito-Bold.ttf) format("truetype"); }
+
+.adoc, .hs {
+    --adoc-ink: #14161F;
+    --adoc-text: rgba(20, 22, 31, .82);
+    --adoc-muted: #6b6f7b;
+    --adoc-line: #E9E5DB;
+    --adoc-soft: #F3F0E8;
+    --adoc-yellow: #FFD66B;
+    --adoc-yellow-soft: #FFF4D1;
+    --adoc-shadow: 0 1px 2px rgba(20, 22, 31, .06), 0 10px 26px rgba(20, 22, 31, .08);
+    --adoc-shadow-hover: 0 24px 44px rgba(20, 22, 31, .18);
+    --adoc-blue: #3d61fd;
+    --adoc-blue-soft: #eef1ff;
+    --adoc-green: #1f9d57;
+    --adoc-green-soft: #e8f6ee;
+    --adoc-amber: #b86e00;
+    --adoc-amber-soft: #fff3e0;
+    --adoc-red: #d23b45;
+    --adoc-red-soft: #fdecee;
+    --adoc-radius: 22px;
+    --adoc-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2.5rem 0 7rem; /* bottom: room for the fixed navigation bar */
+    font-family: Nunito, system-ui, sans-serif;
+    color: var(--adoc-text);
+}
+
+.adoc h1, .adoc h2, .adoc h3, .adoc h4 { font-family: inherit; letter-spacing: -.02em; }
+
+/* The tilted yellow marker behind a title's key word. */
+.adoc-hl {
+    display: inline-block;
+    background: var(--adoc-yellow);
+    color: var(--adoc-ink);
+    padding: 0 .28em .04em;
+    border-radius: .3em;
+    transform: rotate(-2deg);
+}
+
+/* ---- Hero ------------------------------------------------------------- */
+
+.adoc-crumbs {
+    font-size: .85rem;
+    color: var(--adoc-muted);
+    margin-bottom: 1.25rem;
+}
+
+.adoc-crumbs a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.adoc-crumbs a:hover {
+    color: var(--adoc-ink);
+}
+
+.adoc-crumbs span[aria-hidden] {
+    margin: 0 .45rem;
+    opacity: .6;
+}
+
+.adoc-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem 0 .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.adoc-eyebrow {
+    display: inline-block;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    background: var(--adoc-yellow);
+    color: var(--adoc-ink);
+    margin-bottom: .9rem;
+}
+
+.adoc-hero h1 {
+    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: var(--adoc-ink);
+    margin: 0 0 1rem;
+    line-height: 1.08;
+}
+
+.adoc-lead {
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--adoc-muted);
+    max-width: 40rem;
+    margin-bottom: 1.6rem;
+}
+
+.adoc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.4rem;
+}
+
+.adoc-meta li {
+    font-size: .8rem;
+    padding: .3rem .75rem;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--adoc-line);
+    color: var(--adoc-muted);
+}
+
+.adoc-meta strong {
+    color: var(--adoc-ink);
+    font-weight: 700;
+}
+
+.adoc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+}
+
+.adoc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: inherit;
+    font-size: .95rem;
+    font-weight: 700;
+    padding: .75rem 1.35rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1.5px solid var(--adoc-line);
+    background: #fff;
+    color: var(--adoc-ink);
+    cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease;
+}
+
+.adoc-btn:hover {
+    border-color: var(--adoc-ink);
+    color: var(--adoc-ink);
+    transform: translateY(-2px);
+}
+
+.adoc-btn.primary {
+    background: var(--adoc-ink);
+    border-color: var(--adoc-ink);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(20, 22, 31, .25);
+}
+
+.adoc-btn.primary:hover {
+    color: #fff;
+}
+
+.adoc-btn:focus-visible {
+    outline: 3px solid var(--adoc-yellow);
+    outline-offset: 3px;
+}
+
+.adoc-hero-img {
+    width: 300px;
+    max-width: 100%;
+    border-radius: var(--adoc-radius);
+    box-shadow: var(--adoc-shadow-hover);
+}
+
+/* ---- Body: sidebar + content ------------------------------------------ */
+
+.adoc-body {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+}
+
+.adoc-sidebar {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--adoc-line) transparent;
+    font-size: .88rem;
+}
+
+.adoc-toc-box summary {
+    list-style: none;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--adoc-muted);
+    margin-bottom: .75rem;
+    cursor: default;
+}
+
+.adoc-toc-box summary::-webkit-details-marker {
+    display: none;
+}
+
+#adoc-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#adoc-toc ul ul {
+    padding-left: .85rem;
+    margin: .15rem 0 .35rem;
+}
+
+#adoc-toc a {
+    display: block;
+    padding: .28rem .7rem;
+    border-left: 3px solid var(--adoc-line);
+    color: var(--adoc-muted);
+    text-decoration: none;
+    line-height: 1.35;
+}
+
+#adoc-toc ul ul a {
+    font-size: .82rem;
+}
+
+#adoc-toc a:hover {
+    color: var(--adoc-ink);
+}
+
+#adoc-toc a.active {
+    color: var(--adoc-ink);
+    font-weight: 700;
+    border-left-color: var(--adoc-yellow);
+    background: linear-gradient(90deg, var(--adoc-yellow-soft), rgba(255, 255, 255, 0));
+}
+
+/* ---- Content typography ----------------------------------------------- */
+
+.adoc-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    min-width: 0;
+}
+
+.adoc-content > * + * {
+    margin-top: 1rem;
+}
+
+.adoc-content h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--adoc-ink);
+    margin: 3.5rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--adoc-line);
+    scroll-margin-top: 1.5rem;
+}
+
+.adoc-content > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.adoc-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--adoc-ink);
+    margin: 2.2rem 0 .6rem;
+    scroll-margin-top: 1.5rem;
+}
+
+.adoc-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--adoc-ink);
+    margin: 1.5rem 0 .4rem;
+}
+
+.adoc-content .adoc-anchor {
+    margin-left: .45rem;
+    color: var(--adoc-muted);
+    text-decoration: none;
+    box-shadow: none;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.adoc-content h2:hover .adoc-anchor,
+.adoc-content h3:hover .adoc-anchor,
+.adoc-content .adoc-anchor:focus {
+    opacity: 1;
+}
+
+.adoc-content a:not(.adoc-btn):not(.adoc-anchor):not(.adoc-card) {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 var(--adoc-yellow), 0 2px 0 var(--adoc-yellow);
+}
+
+.adoc-content ul,
+.adoc-content ol {
+    padding-left: 1.4rem;
+}
+
+.adoc-content li + li {
+    margin-top: .3rem;
+}
+
+.adoc-content img {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+.adoc-content :not(pre) > code {
+    font-family: var(--adoc-mono);
+    font-size: .86em;
+    padding: .12em .4em;
+    border-radius: 6px;
+    background: var(--adoc-soft);
+    border: 1px solid var(--adoc-line);
+    color: #b3226b;
+    word-break: break-word;
+}
+
+.adoc-content kbd {
+    font-family: var(--adoc-mono);
+    font-size: .8em;
+    padding: .15em .45em;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #d5d6dc;
+    border-bottom-width: 2px;
+    color: var(--adoc-ink);
+}
+
+/* "Tools › HardArtcore › Window" style menu paths. */
+.adoc-menu {
+    display: inline;
+    font-weight: 700;
+    color: var(--adoc-ink);
+    background: var(--adoc-blue-soft);
+    padding: .1em .45em;
+    border-radius: 6px;
+    white-space: normal;
+}
+
+/* ---- Code blocks ------------------------------------------------------ */
+
+.adoc-content pre {
+    position: relative;
+    margin: 1.2rem 0;
+    padding: 1.1rem 1.2rem;
+    border-radius: 12px;
+    background: var(--adoc-soft);
+    border: 1px solid var(--adoc-line);
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.55;
+}
+
+.adoc-content pre code {
+    font-family: var(--adoc-mono);
+    background: none !important; /* highlight.js theme background */
+    padding: 0 !important;
+}
+
+.adoc-code {
+    margin: 1.2rem 0;
+}
+
+.adoc-code figcaption {
+    font-family: var(--adoc-mono);
+    font-size: .75rem;
+    color: var(--adoc-muted);
+    padding: .45rem 1rem;
+    border: 1px solid var(--adoc-line);
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    background: #fff;
+}
+
+.adoc-code pre {
+    margin: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.adoc-copy {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .25rem .6rem;
+    border-radius: 8px;
+    border: 1px solid var(--adoc-line);
+    background: #fff;
+    color: var(--adoc-muted);
+    opacity: 0;
+    transition: opacity .15s;
+    cursor: pointer;
+}
+
+.adoc-content pre:hover .adoc-copy,
+.adoc-copy:focus {
+    opacity: 1;
+}
+
+/* ---- Tables ----------------------------------------------------------- */
+
+.adoc-table {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--adoc-line);
+    border-radius: 12px;
+}
+
+.adoc-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+.adoc-table th,
+.adoc-table td {
+    padding: .7rem .9rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--adoc-line);
+}
+
+.adoc-table th {
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--adoc-muted);
+    background: var(--adoc-soft);
+    white-space: nowrap;
+}
+
+.adoc-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.adoc-table td:first-child code {
+    white-space: nowrap;
+}
+
+/* ---- Callouts --------------------------------------------------------- */
+
+.adoc-callout {
+    margin: 1.4rem 0;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--adoc-blue);
+    background: var(--adoc-blue-soft);
+    font-size: .95rem;
+}
+
+.adoc-callout > :last-child {
+    margin-bottom: 0;
+}
+
+.adoc-callout-title {
+    display: block;
+    font-weight: 800;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: .3rem;
+    color: var(--adoc-blue);
+}
+
+.adoc-callout.tip { border-color: var(--adoc-green); background: var(--adoc-green-soft); }
+.adoc-callout.tip .adoc-callout-title { color: var(--adoc-green); }
+.adoc-callout.warning { border-color: var(--adoc-amber); background: var(--adoc-amber-soft); }
+.adoc-callout.warning .adoc-callout-title { color: var(--adoc-amber); }
+.adoc-callout.danger { border-color: var(--adoc-red); background: var(--adoc-red-soft); }
+.adoc-callout.danger .adoc-callout-title { color: var(--adoc-red); }
+
+/* ---- Steps ------------------------------------------------------------ */
+
+.adoc-steps {
+    list-style: none;
+    counter-reset: adoc-step;
+    padding: 0 !important;
+    margin: 1.4rem 0;
+}
+
+.adoc-steps > li {
+    counter-increment: adoc-step;
+    position: relative;
+    padding: 0 0 1.3rem 3.1rem;
+    margin: 0 !important;
+}
+
+.adoc-steps > li::before {
+    content: counter(adoc-step);
+    position: absolute;
+    left: 0;
+    top: -.1rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--adoc-yellow);
+    color: var(--adoc-ink);
+    font-weight: 800;
+    font-size: .9rem;
+}
+
+.adoc-steps > li::after {
+    content: "";
+    position: absolute;
+    left: 1.02rem;
+    top: 2.2rem;
+    bottom: .2rem;
+    width: 2px;
+    background: var(--adoc-line);
+}
+
+.adoc-steps > li:last-child::after {
+    display: none;
+}
+
+.adoc-steps > li > strong:first-child {
+    display: block;
+    color: var(--adoc-ink);
+}
+
+/* ---- Cards ------------------------------------------------------------ */
+
+.adoc-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.4rem 0;
+}
+
+.adoc-card {
+    display: block;
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--adoc-radius);
+    border: 1px solid var(--adoc-line);
+    background: #fff;
+    color: inherit;
+    text-decoration: none;
+    font-size: .92rem;
+    line-height: 1.5;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+a.adoc-card:hover {
+    color: inherit;
+    transform: translateY(-3px);
+    box-shadow: var(--adoc-shadow);
+}
+
+.adoc-card h4 {
+    margin: 0 0 .35rem !important;
+    font-size: 1rem;
+}
+
+.adoc-card p {
+    margin: 0;
+    color: var(--adoc-muted);
+}
+
+/* ---- Badges, figures, file tree, definition lists ------------------------ */
+
+.adoc-badge {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .12rem .5rem;
+    border-radius: 999px;
+    background: var(--adoc-soft);
+    border: 1px solid var(--adoc-line);
+    color: var(--adoc-muted);
+    vertical-align: middle;
+}
+
+.adoc-badge.new { background: var(--adoc-yellow); border-color: var(--adoc-yellow); color: var(--adoc-ink); }
+.adoc-badge.optional { background: var(--adoc-blue-soft); border-color: var(--adoc-blue-soft); color: var(--adoc-blue); }
+.adoc-badge.editor { background: var(--adoc-green-soft); border-color: var(--adoc-green-soft); color: var(--adoc-green); }
+
+.adoc-figure {
+    margin: 1.6rem 0;
+    text-align: center;
+}
+
+.adoc-figure img {
+    border: 1px solid var(--adoc-line);
+}
+
+.adoc-figure figcaption {
+    font-size: .82rem;
+    color: var(--adoc-muted);
+    margin-top: .5rem;
+}
+
+.adoc-tree {
+    font-family: var(--adoc-mono);
+    font-size: .82rem;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+.adoc-fields {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: .55rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: .92rem;
+}
+
+.adoc-fields dt {
+    font-family: var(--adoc-mono);
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--adoc-ink);
+}
+
+.adoc-fields dd {
+    margin: 0;
+}
+
+/* ---- Release notes & help box ----------------------------------------- */
+
+.adoc-release {
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--adoc-line);
+    margin: 1rem 0;
+}
+
+.adoc-release h3 {
+    margin: 0 0 .5rem !important;
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+}
+
+.adoc-release time {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--adoc-muted);
+}
+
+.adoc-help {
+    margin-top: 4rem;
+    padding: 1.6rem;
+    border-radius: 20px;
+    background: var(--adoc-soft);
+    border: 1px solid var(--adoc-line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adoc-help h2 {
+    font-size: 1.15rem !important;
+    margin: 0 0 .2rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.adoc-help p {
+    margin: 0;
+    color: var(--adoc-muted);
+}
+
+.adoc-updated {
+    font-size: .8rem;
+    color: var(--adoc-muted);
+    margin-top: 1rem;
+}
+
+/* ---- Games & assets (layouts: games, game, unity_assets, single_asset) -- */
+
+.adoc-product {
+    background: none; /* some per-game themes in theme.scss paint the body */
+    font-size: 1rem;
+}
+
+.adoc-product .adoc-hero-img {
+    width: 340px;
+}
+
+#gameplay > h2,
+#screenshots > h2 {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--adoc-line);
+}
+
+/* Screenshots: a swipeable strip, so portrait and landscape shots sit side by side. */
+.adoc-shots {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-bottom: .75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--adoc-line) transparent;
+}
+
+.adoc-shots a {
+    flex: none;
+    scroll-snap-align: start;
+}
+
+.adoc-shots img {
+    display: block;
+    height: clamp(240px, 45vw, 400px);
+    width: auto;
+    border-radius: var(--adoc-radius);
+    border: 1px solid var(--adoc-line);
+    transition: border-color .15s;
+}
+
+.adoc-shots a:hover img {
+    border-color: var(--adoc-ink);
+}
+
+.adoc-product .adoc-help {
+    margin-top: 3.5rem;
+}
+
+/* App-icon logo above the title and fact chips under the lead (single_asset: logo, highlights). */
+.adoc-logo {
+    display: block;
+    width: 88px;
+    height: 88px;
+    border-radius: 24px;
+    box-shadow: var(--adoc-shadow-hover);
+    transform: rotate(-4deg);
+    margin-bottom: 1.25rem;
+}
+
+.adoc-highlights li {
+    font-size: .9rem;
+    padding: .4rem .9rem;
+}
+
+/* A game made with the asset (single_asset: built_with): its poster beside a short pitch, on the game's colours. */
+.adoc-built {
+    position: relative;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+    margin: 2.5rem 0 3rem;
+    padding: 2.25rem 2.5rem;
+    border-radius: calc(var(--adoc-radius) * 1.5);
+    background: var(--adoc-ink);
+    color: #fff;
+    overflow: hidden;
+}
+
+.adoc-built-art {
+    display: block;
+    border-radius: var(--adoc-radius);
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, .28);
+    transform: rotate(-3deg);
+    transition: transform .25s ease;
+}
+
+.adoc-built-art:hover { transform: rotate(-1deg) translateY(-4px); }
+.adoc-built-art img { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; object-position: top; }
+
+.adoc-built-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: .25rem 0 .9rem;
+}
+
+.adoc-built-title img { width: 64px; height: 64px; border-radius: 18px; box-shadow: 0 10px 24px rgba(0, 0, 0, .22); }
+.adoc-built-title h2 { margin: 0; font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; letter-spacing: -.02em; color: #fff; }
+.adoc-built p { font-size: 1.08rem; line-height: 1.55; max-width: 34rem; margin-bottom: 1.4rem; color: rgba(255, 255, 255, .95); }
+.adoc-built .adoc-btn { background: rgba(255, 255, 255, .92); border-color: transparent; }
+.adoc-built .adoc-btn:hover { background: #fff; border-color: transparent; }
+.adoc-built .adoc-btn.primary { background: var(--adoc-ink); color: #fff; }
+.adoc-built .adoc-btn.primary:hover { background: #000; }
+
+/* ---- Site pages (layouts: page, post) --------------------------------- */
+
+.adoc-meta a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.adoc-author {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+.adoc-author img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.adoc-author p {
+    margin: 0;
+    color: var(--adoc-muted);
+}
+
+/* ---- Responsive ------------------------------------------------------- */
+
+@media (max-width: 991px) {
+    .adoc {
+        padding-top: 1.5rem;
+    }
+
+    .adoc-hero {
+        grid-template-columns: 1fr;
+        padding: 1.4rem;
+    }
+
+    .adoc-hero-img {
+        display: none;
+    }
+
+    .adoc-product .adoc-hero-img {
+        display: block;
+        order: -1;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .adoc-built {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .adoc-built-art { width: 150px; margin: 0 auto; }
+
+    .adoc-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* The table of contents becomes a collapsible box above the content. */
+    .adoc-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .adoc-toc-box {
+        border: 1px solid var(--adoc-line);
+        border-radius: 12px;
+        padding: .8rem 1rem;
+        background: var(--adoc-soft);
+    }
+
+    .adoc-toc-box summary {
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .adoc-toc-box summary::after {
+        content: "+";
+        float: right;
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .adoc-toc-box[open] summary {
+        margin-bottom: .75rem;
+    }
+
+    .adoc-toc-box[open] summary::after {
+        content: "\2212";
+    }
+
+    .adoc-fields {
+        grid-template-columns: 1fr;
+        gap: .15rem;
+    }
+
+    .adoc-fields dd {
+        margin-bottom: .6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .adoc * {
+        transition: none !important;
+    }
+}
+
+/* Gameplay video and click-to-play browser demo on an asset page. */
+.adoc-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 2.5rem;
+    border-radius: var(--adoc-radius);
+    background: #05070d;
+}
+
+.adoc-demo {
+    margin-bottom: 2.5rem;
+}
+
+.adoc-demo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--adoc-radius);
+    background: #05070d center / cover no-repeat;
+}
+
+.adoc-demo-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.adoc-demo-frame .adoc-btn {
+    font-size: 1rem;
+    padding: .8rem 1.4rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .45);
+    cursor: pointer;
+}
+
+.adoc-demo-note {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem 1rem;
+    margin-top: .6rem;
+    font-size: .9rem;
+    color: var(--adoc-muted);
+}
+
+.adoc-demo-note a,
+.adoc-demo-fullscreen {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 700;
+    color: var(--adoc-blue);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Bootstrap form fields (contact page) in the site's look. */
+.adoc .form-control {
+    padding: .85rem 1.1rem;
+    border: 1.5px solid var(--adoc-line);
+    border-radius: 16px !important;
+    background: #fff;
+    font-family: inherit;
+    color: var(--adoc-ink);
+}
+
+.adoc .form-control:focus {
+    border-color: var(--adoc-ink);
+    box-shadow: 0 0 0 3px var(--adoc-yellow-soft);
+}
+
+/* Timeline (About page): .adoc-steps with dots instead of numbers. */
+.adoc-timeline > li::before {
+    content: "";
+    left: .55rem;
+    top: .45rem;
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid var(--adoc-yellow);
+    background: #fff;
+}
+
+.adoc-timeline > li::after {
+    top: 1.6rem;
+}
+
+.adoc-timeline > li > strong:first-child {
+    font-size: 1.15rem;
+}
+
+.adoc-timeline time {
+    display: block;
+    font-size: .88rem;
+    color: var(--adoc-muted);
+    margin-bottom: .3rem;
+}
+
+/* Pills inside content (About: skills); .adoc-meta outside .adoc-content needs none of this. */
+.adoc-content .adoc-meta {
+    padding: 0;
+}
+
+.adoc-content .adoc-meta li {
+    margin: 0;
+}
+
+.adoc-skills li {
+    font-size: .95rem;
+    font-weight: 700;
+    padding: .45rem 1rem;
+    color: var(--adoc-ink);
+}
+
+/* Blog post (layout: post): one narrow reading column, cover image under the title. */
+.adoc-post {
+    max-width: 760px;
+}
+
+.adoc-post .adoc-content {
+    font-size: 1.08rem;
+    line-height: 1.75;
+}
+
+.adoc-post-cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 730 / 383;
+    object-fit: cover;
+    border-radius: var(--adoc-radius);
+    box-shadow: var(--adoc-shadow-hover);
+    margin-bottom: 3rem;
+}
+
+.adoc-post .adoc-cards {
+    grid-template-columns: 1fr 1fr;
+}
+
+*, *::before, *::after { box-sizing: border-box; } /* the website gets it from Bootstrap */
+body { margin: 0; background: #FBF8F1; }
+.adoc-hero > *, .adoc-body > *, .adoc-content { min-width: 0; }
+.adoc { padding-left: 24px; padding-right: 24px; padding-bottom: 4rem; }
+.adoc-licence { margin: 0 0 .75rem; }
+.adoc-licence summary { cursor: pointer; font-weight: 700; color: var(--adoc-ink); }
+.adoc-licence pre { white-space: pre-wrap; font-size: .8rem; max-height: 24rem; overflow: auto; }
+</style></head>
+<body id="top"><div class="adoc">
+  <header class="adoc-hero"><div>
+    <span class="adoc-eyebrow">Documentation</span>
+    <h1>Simple UI Icons</h1>
+    <p class="adoc-lead">Free game UI icons for Unity: 51 icons in three matching styles, Filled, Line and Border, as white 512 × 512 sprites you tint to any colour.</p>
+    <ul class="adoc-meta"><li>Version <strong>1.3</strong></li><li>Unity <strong>6000.0+</strong></li><li>Platforms <strong>All</strong></li><li>Updated <strong>Nov 18, 2026</strong></li></ul>
+    <div class="adoc-actions">
+      <a class="adoc-btn primary" href="https://hardartcore.com/unity_assets/simple-ui-icons/documentation/">Online documentation</a>
+      <a class="adoc-btn" href="mailto:support@hardartcore.com?subject=Simple%20UI%20Icons%20support">Get support</a>
+    </div>
+  </div></header>
+  <div class="adoc-body">
+    <aside class="adoc-sidebar"><details class="adoc-toc-box" open><summary>On this page</summary>
+      <nav id="adoc-toc" aria-label="Table of contents"></nav></details></aside>
+    <article class="adoc-content" id="adoc-content">
+<h2 id="overview">Overview</h2>
+<p>
+  <strong>Simple UI Icons</strong> is a free set of 51 game UI icons, each drawn in three matching styles: Filled,
+  Line and Border. That is 153 sprites, 512 × 512 PNGs with white art, so you tint them to any colour with the
+  <code>Image</code> colour and no extra textures.
+</p>
+
+<div class="adoc-cards">
+  <a class="adoc-card" href="#icons"><h4>51 icons</h4><p>Home, back, menu, settings, shop, coins, gems, gifts, sound, play and pause, locks and more: the buttons every game needs.</p></a>
+  <a class="adoc-card" href="#styles"><h4>3 matching styles</h4><p>Filled, Line and Border versions of every icon, so one game can mix them.</p></a>
+  <a class="adoc-card" href="#tinting"><h4>Any colour</h4><p>White art: the Image colour becomes the icon colour. Border outlines stay black.</p></a>
+  <a class="adoc-card" href="#quick-start"><h4>Ready to drop in</h4><p>Already imported as sprites. Drag one onto an Image and you are done.</p></a>
+</div>
+
+<h3 id="requirements">Requirements</h3>
+<div class="adoc-table">
+  <table>
+    <thead><tr><th>Item</th><th>Version</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Unity</td><td>6000.0+</td><td>The demo scene was saved in Unity 6. The PNGs themselves work in any version.</td></tr>
+      <tr><td><code>com.unity.ugui</code></td><td>2.0+</td><td>For the demo scene and the <code>Image</code> component. Not needed for SpriteRenderer or UI Toolkit.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="quick-start">Quick start</h2>
+<ol class="adoc-steps">
+  <li><strong>Import the package</strong> Everything lands in <code>Assets/HardArtcore/UI/SimpleIcons</code>.</li>
+  <li><strong>Browse the icons</strong> Open <code>Scenes/DemoScene</code>: three scroll views show every icon in each style.</li>
+  <li><strong>Use one</strong> Add a <span class="adoc-menu">UI › Image</span> to your Canvas and drag a sprite from <code>Sprites/Icons/&lt;Style&gt;</code> into its <em>Source Image</em>. Tick <em>Preserve Aspect</em>.</li>
+  <li><strong>Tint it</strong> Set the Image's <em>Color</em>. White keeps the art as it is.</li>
+</ol>
+
+<h3 id="folders">Folder layout</h3>
+<pre class="adoc-tree">Assets/HardArtcore/UI/SimpleIcons/
+├── Documentation/        this documentation
+├── Scenes/
+│   └── DemoScene.unity   every icon in every style
+└── Sprites/Icons/
+    ├── Filled/           ic_&lt;name&gt;_fill.png
+    ├── Line/             ic_&lt;name&gt;_lines.png
+    └── Border/           ic_&lt;name&gt;.png</pre>
+
+<h2 id="styles">The three styles</h2>
+<dl class="adoc-fields">
+  <dt>Filled</dt><dd>Solid white shapes with cut-out details. Bold and readable at small sizes. Files: <code>Filled/ic_&lt;name&gt;_fill.png</code>.</dd>
+  <dt>Line</dt><dd>Rounded white outlines for clean, minimal menus and HUDs. Files: <code>Line/ic_&lt;name&gt;_lines.png</code>.</dd>
+  <dt>Border</dt><dd>A white shape with a thick black outline and a baked drop shadow, for a cartoon look. Files: <code>Border/ic_&lt;name&gt;.png</code>.</dd>
+</dl>
+
+<h2 id="icons">Icon list</h2>
+<p>Every icon below exists in all three styles. Replace <code>&lt;name&gt;</code> in the file patterns above.</p>
+<div class="adoc-table">
+  <table>
+    <thead><tr><th>Group</th><th>Names</th></tr></thead>
+    <tbody>
+      <tr><td>Navigation</td><td><code>home</code>, <code>map</code>, <code>cursor</code>, <code>back</code>, <code>menu</code>, <code>exit</code>, <code>close</code>, <code>check</code>, <code>refresh</code>, <code>share</code></td></tr>
+      <tr><td>Player and social</td><td><code>profile</code>, <code>like</code>, <code>love</code>, <code>inbox</code>, <code>announcement</code>, <code>leaderboards</code>, <code>globe</code></td></tr>
+      <tr><td>Help</td><td><code>info</code>, <code>help</code>, <code>hint</code></td></tr>
+      <tr><td>Rewards</td><td><code>achievements</code>, <code>cup</code>, <code>star</code>, <code>target</code>, <code>coin</code>, <code>gem</code>, <code>gift</code>, <code>key</code>, <code>calendar</code></td></tr>
+      <tr><td>Shop and items</td><td><code>store</code>, <code>shopping_cart</code>, <code>backpack</code>, <code>magnet</code>, <code>energy</code>, <code>fuel</code>, <code>stopwatch</code>, <code>video</code>, <code>shield</code></td></tr>
+      <tr><td>Settings and media</td><td><code>settings</code>, <code>music_on</code>, <code>music_off</code>, <code>volume_on</code>, <code>volume_off</code>, <code>notification_on</code>, <code>notifications_off</code>, <code>play</code>, <code>pause</code></td></tr>
+      <tr><td>States</td><td><code>locked</code>, <code>unlocked</code>, <code>plus</code>, <code>minus</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="adoc-callout">
+  <span class="adoc-callout-title">Note</span>
+  <p>One file name differs: the Line version of <code>notification_on</code> is <code>Line/ic_notifications_on_lines.png</code>.</p>
+</div>
+
+<h2 id="tinting">Tinting</h2>
+<p>
+  The art is white, and Unity multiplies a sprite by its colour, so the colour you set is the colour you see. In the
+  Border style the black outline and shadow stay black, since black times any colour is black.
+</p>
+<figure class="adoc-code">
+  <figcaption>uGUI Image</figcaption>
+  <pre><code class="language-csharp">using UnityEngine;
+using UnityEngine.UI;
+
+public class IconButton : MonoBehaviour
+{
+    [SerializeField] Image icon;
+    [SerializeField] Sprite musicOn, musicOff;
+
+    public void SetMusic(bool on)
+    {
+        icon.sprite = on ? musicOn : musicOff;
+        icon.color = on ? new Color32(46, 184, 114, 255) : new Color32(255, 118, 87, 255);
+    }
+}</code></pre>
+</figure>
+<p>
+  The same works with a <code>SpriteRenderer</code> (<code>spriteRenderer.color</code>) and in UI Toolkit, with the
+  sprite as <code>background-image</code> and <code>-unity-background-image-tint-color</code> for the colour.
+</p>
+
+<h2 id="import-settings">Import settings</h2>
+<p>
+  The PNGs are imported as <em>Sprite (2D and UI)</em>, <em>Single</em>, with <em>Alpha Is Transparency</em> on. They
+  are 512 × 512, so they stay sharp on large buttons. For small icons on mobile, lower <em>Max Size</em> (128 or 256)
+  in the import settings or pack them into a Sprite Atlas to save memory.
+</p>
+
+<h2 id="licence">Licence</h2>
+<p>
+  Free, under the standard Unity Asset Store EULA: use the icons in your games and apps, commercial ones included.
+  Redistributing them as an icon pack on their own is not allowed.
+</p>
+
+<h2 id="release-notes">Release notes</h2>
+<div class="adoc-release">
+  <h3>1.3 <time datetime="2026-11-18">Nov 18, 2026</time></h3>
+  <ul>
+    <li>16 new icons in all three styles: Play, Pause, Check, Back, Menu, Exit, Info, Help, Coin, Gem, Gift, Key, Shield, Hint, Calendar and Globe.</li>
+    <li>Demo scene: shows the new icons, the scroll views size to their content, and the duplicate Fuel icon is gone.</li>
+  </ul>
+  <h3>1.2 <time datetime="2025-03-21">Mar 21, 2025</time></h3>
+  <ul>
+    <li>New icons: Magnet, Plus, Close, Minus, Music on, Music off, Energy and Star, in all three styles.</li>
+  </ul>
+  <h3>1.1 <time datetime="2025-03-05">Mar 5, 2025</time></h3>
+  <ul>
+    <li>New Border style, with a black outline.</li>
+    <li>New Fuel icon; updated Backpack icon.</li>
+  </ul>
+  <h3>1.0 <time datetime="2025-02-28">Feb 28, 2025</time></h3>
+  <ul>
+    <li>First release.</li>
+  </ul>
+</div>
+
+      <section class="adoc-help"><div><h2>Need help?</h2>
+        <p>Questions, bug reports or feature requests: I usually reply within a day.</p></div>
+        <a class="adoc-btn primary" href="mailto:support@hardartcore.com?subject=Simple%20UI%20Icons%20support">support@hardartcore.com</a></section>
+    </article>
+  </div>
+</div>
+<script>// Asset documentation template (layout: asset_documentation). Loaded with `defer` after highlight.js.
+// Builds the sidebar table of contents from the page's h2/h3 headings, so pages written in HTML
+// or Markdown need no manual TOC; adds heading anchors, code copy buttons and syntax highlighting.
+(function () {
+  const content = document.getElementById('adoc-content');
+  const tocNav = document.getElementById('adoc-toc');
+  if (!content || !tocNav) return;
+
+  // A kramdown "* TOC {:toc}" left in a migrated Markdown page would duplicate the sidebar.
+  const legacyToc = content.querySelector('#markdown-toc');
+  if (legacyToc) legacyToc.remove();
+
+  const slug = function (text) {
+    return text.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+  };
+
+  // ---- Table of contents (h2 with nested h3) ----
+  const headings = [...content.querySelectorAll('h2, h3')].filter(function (h) {
+    return !h.closest('.adoc-help, .adoc-card, .adoc-release');
+  });
+  const used = new Set();
+  const root = document.createElement('ul');
+  let currentSub = null;
+
+  headings.forEach(function (h) {
+    if (!h.id) {
+      let id = slug(h.textContent) || 'section';
+      for (let n = 2; used.has(id) || document.getElementById(id); n++) id = slug(h.textContent) + '-' + n;
+      h.id = id;
+    }
+    used.add(h.id);
+    const label = h.dataset.toc || h.textContent.trim();
+
+    const anchor = document.createElement('a');
+    anchor.className = 'adoc-anchor';
+    anchor.href = '#' + h.id;
+    anchor.setAttribute('aria-label', 'Link to this section');
+    anchor.textContent = '#';
+    h.appendChild(anchor);
+
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + h.id;
+    link.textContent = label;
+    item.appendChild(link);
+
+    if (h.tagName === 'H2' || !root.lastElementChild) {
+      root.appendChild(item);
+      currentSub = null;
+    } else {
+      if (!currentSub) {
+        currentSub = document.createElement('ul');
+        root.lastElementChild.appendChild(currentSub);
+      }
+      currentSub.appendChild(item);
+    }
+  });
+  tocNav.appendChild(root);
+
+  // On small screens the TOC is a collapsible box; close it after a jump.
+  const box = tocNav.closest('details');
+  const small = window.matchMedia('(max-width: 991px)');
+  const syncBox = function () { if (box) box.open = !small.matches; };
+  syncBox();
+  small.addEventListener('change', syncBox);
+  tocNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && small.matches && box) box.open = false;
+  });
+
+  // ---- Scroll spy ----
+  const links = [...tocNav.querySelectorAll('a')];
+  const updateActive = function () {
+    let current = -1;
+    headings.forEach(function (h, i) { if (h.getBoundingClientRect().top < 140) current = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+    const active = links[current];
+    if (active && !small.matches) {
+      const sidebar = tocNav.closest('.adoc-sidebar');
+      const top = active.offsetTop, bottom = top + active.offsetHeight;
+      if (sidebar && (top < sidebar.scrollTop || bottom > sidebar.scrollTop + sidebar.clientHeight))
+        sidebar.scrollTop = top - sidebar.clientHeight / 3;
+    }
+  };
+  let ticking = false;
+  addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { updateActive(); ticking = false; });
+  }, { passive: true });
+  updateActive();
+
+  // ---- Code blocks: highlighting + copy button ----
+  if (window.hljs) {
+    content.querySelectorAll('pre code').forEach(function (block) {
+      // Blocks without a language class stay plain rather than being guessed.
+      if (/\blanguage-/.test(block.className)) hljs.highlightElement(block);
+    });
+  }
+
+  if (navigator.clipboard) {
+    content.querySelectorAll('pre').forEach(function (pre) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'adoc-copy';
+      button.textContent = 'Copy';
+      button.addEventListener('click', function () {
+        navigator.clipboard.writeText(pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText)
+          .then(function () {
+            button.textContent = 'Copied';
+            setTimeout(function () { button.textContent = 'Copy'; }, 1500);
+          });
+      });
+      pre.appendChild(button);
+    });
+  }
+})();
+</script>
+</body></html>
